@@ -15,7 +15,7 @@ namespace PC_offer
         public Form1()
         {
             InitializeComponent();
-
+            label1.Text = "Powered by Sanya_Kalash";
             textBox2.MouseClick += new MouseEventHandler(mouseClick);
         }
 
@@ -43,7 +43,7 @@ namespace PC_offer
             else
             {
                 timer1.Enabled = false;
-                System.Diagnostics.Process.Start("cmd", "/c shutdown -s -f -t 00");
+                System.Diagnostics.Process.Start("cmd", "/c shutdown -s -f -t 00");  // power off in cmd
                 //MessageBox.Show("BADABOOM!"); // need to power off pc
                 this.Close();
             }

@@ -16,21 +16,25 @@ namespace PC_offer
         {
             InitializeComponent();
             label1.Text = "Powered by Sanya_Kalash";
-            textBox2.MouseClick += new MouseEventHandler(mouseClick);
         }
 
-        private void mouseClick(object sender, EventArgs e)
-        {
-            textBox2.Clear();
-        }
 
-        int timeValue;
+        decimal timeValue;
         private void Button1_Click(object sender, EventArgs e)
         {
-            timeValue = int.Parse(textBox2.Text.ToString()) * 60;  // * 60 to minute
-            progressBar1.Maximum = timeValue;
-            timer1.Enabled = !timer1.Enabled;
-            label2.Text = "Время выключения: "+ (DateTime.Now.AddSeconds(timeValue));
+            if (numericUpDown1.Value !=0 )
+            {
+                timeValue = numericUpDown1.Value* 60 ;  // * 60 to minute
+                progressBar1.Maximum = Decimal.ToInt32(timeValue);
+                timer1.Enabled = !timer1.Enabled;
+                label2.Text = "Время выключения: " + (DateTime.Now.AddSeconds( Decimal.ToInt32(timeValue)));
+            }
+            else
+            {
+                MessageBox.Show("Значение должно быть больше 0");
+                
+            }
+
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -49,14 +53,13 @@ namespace PC_offer
             }
         }
 
-
         private void Button2_Click(object sender, EventArgs e)
         {
             timer1.Enabled = !timer1.Enabled;
-            timeValue = default;
             progressBar1.Value = default;
             label2.Text = "";
-            textBox2.Text = default;
+            numericUpDown1.Value = default;
         }
+
     }
 }
